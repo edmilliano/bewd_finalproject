@@ -1,7 +1,15 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+puts "Adding a whole bunch of questions"
+
+Question.create [
+{
+	questiontext: "Should I early exercise my options?",
+	topic: "exercising"
+},
+{
+	questiontext: "What is the difference between Incentive Stock Options (ISO) and Restricted Stock Units (RSU)?",
+	topic: "equity types"
+},
+{
+	questiontext: "How do I calculate how much my stock is worth?",
+	topic: "value"
+}]
