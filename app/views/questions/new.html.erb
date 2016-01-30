@@ -1,2 +1,13 @@
-<h1>Questions#new</h1>
-<p>Find me in app/views/questions/new.html.erb</p>
+<h1>Questions</h1>
+
+Search for your questions
+<%= form_tag "/", method: "GET" do %>
+  <%= text_field_tag :q, params[:q] %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+Ask a question
+<%= render  'form' %>
+
+Here's a list of all the questions 
+<%= render 'list' %>

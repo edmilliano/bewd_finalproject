@@ -12,7 +12,7 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new 
     if @question.save
-      redirect_to root_path
+      redirect_to questions_path
     else
       render 'new'
     end
@@ -23,7 +23,7 @@ class QuestionsController < ApplicationController
 
   def update
     if @question.update
-      redirect_to root_path
+      redirect_to questions_path
     else
       render 'edit'
     end

@@ -1,17 +1,16 @@
-<h1>Welcome to "name" for questions on equity</h1>
+<h1>Welcome to "blablabla"</h1>
 
-<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+<%= link_to "Ask a question", new_question_path%>
+<%= link_to "Connect with a pro", root_path %>
+<%= link_to "Data", root_path %> 
 
-Search for your questions
-<%= form_tag "/", method: "GET" do %>
-  <%= text_field_tag :q, params[:q] %>
-  <%= submit_tag "Search" %>
+
+<% if current_user %>
+	<p1>You're logged in! </p1>
+<% else %>
+	<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+	<%= link_to "Don't want to sign up with Facebook? Register here!", new_user_registration_path %>
 <% end %>
 
-Ask a question
-<%= render  'form' %>
-
-Here's a list of all the questions 
-<% render 'list' %>
 
 <br/><br/>
