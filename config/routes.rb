@@ -3,8 +3,8 @@ Rails.application.routes.draw do
         sessions: 'sessions',
         omniauth_callbacks: "users/omniauth_callbacks"
       }
-  # root "questions#index"
-  # resources :questions
+  root "questions#index"
+  resources :questions
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
