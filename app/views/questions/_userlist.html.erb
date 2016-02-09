@@ -1,0 +1,6 @@
+<% @question.each do |question| %>
+	<% if current_user.questions.include? question %>
+	<p class="lead"><%= link_to question.text, question %></p>
+	<br>
+	<% end %>
+<% end %>

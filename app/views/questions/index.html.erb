@@ -1,16 +1,21 @@
-<h1>Welcome to "blablabla"</h1>
 
-<%= link_to "Ask a question", new_question_path%>
-<%= link_to "Connect with a pro", root_path %>
-<%= link_to "Data", root_path %> 
+<div class="row">
+	<div class="col-md-3">
+  		<% if user_signed_in? %>
+			<h3> Your questions </h3>
+			<%= render 'userlist' %>
+		<% end %>
+	</div>
+  
+  	<div class="col-md-6">
+		<h3> Top questions</h3>
+		<%= render 'list' %>
+  	</div>
+  
+  <div class="col-md-3"></div>
+</div>
 
 
-<% if current_user %>
-	<p1>You're logged in! </p1>
-<% else %>
-	<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-	<%= link_to "Don't want to sign up with Facebook? Register here!", new_user_registration_path %>
-<% end %>
 
 
-<br/><br/>
+

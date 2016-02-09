@@ -1,13 +1,5 @@
-<h1>Questions</h1>
-
-Search for your questions
-<%= form_tag "/", method: "GET" do %>
-  <%= text_field_tag :q, params[:q] %>
-  <%= submit_tag "Search" %>
-<% end %>
-
 Ask a question
-<%= render  'form' %>
+<%= render 'form' %>
 
-Here's a list of all the questions 
-<%= render 'list' %>
+<br/><br/>
+

@@ -1,25 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Project4App</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <title>Project title</title>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+      </script>
+    <![endif]-->
+  </head>
+  <body>
+	
 
-	<% if !current_page?(root_path) %>
-	<%= link_to "Home", "/" %>
-	<% end %>
+	<header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <%= link_to "TakeStock", questions_path, id: "logo" %>
+        
+        <form class="navbar-form navbar-left" role="search">
+          <%if user_signed_in? %>
+            <div class="form-group">
+             <%= form_tag "/questions", method: "GET" do %>
+              <%= text_field_tag :q, params[:q], type: "text", class:"form-control", placeholder: "Search"%>
+              <%= submit_tag "Submit", class: 'btn btn-default' %>
+              <% end %>
+            </div>
+          <% end %>
+        </form>
 
-	<%if user_signed_in? %>
-		<%= link_to "Profile", edit_user_registration_path %>
-		<%= link_to "Logout", destroy_user_session_path %>
-	<% else %>
-		<%link_to "Log in", user_session_path %>
-		<%link_to "Sign up", new_user_registration_path %>
-	<% end %> 
+        <p class="navbar-text"><%= link_to "Ask a question", new_question_path %></p>
 
+        <nav>
+        	<ul class="nav navbar-nav navbar-right">
+				<% if !current_page?(root_path) %></li>
+					<li><%= link_to "Home", "/" %></li>
+				<% end %>
+				<%if user_signed_in? %>
+					<li><%= link_to "Profile", edit_user_registration_path %></li>
+					<li><%= link_to "Logout", destroy_user_session_path %></li>
+				<% else %>
+					<li><%link_to "Log in", user_session_path %></li>
+					<li><%link_to "Sign up", new_user_registration_path %></li>
+				<% end %> 
+				</ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+    <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>">
+    <%= value %>
+    </div>
+  <% end %>
 <%= yield %>
 
 </body>

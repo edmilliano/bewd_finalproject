@@ -4,8 +4,15 @@ Rails.application.routes.draw do
         registrations: 'users/registrations',
         omniauth_callbacks: "users/omniauth_callbacks"
       }
-  root "questions#index"
-  resources :questions
+  root "homepage#index"
+  get 'questions/show/:id' => 'questions#show'
+  get 'questions/:id/answers' => 'answers#create'
+  get 'questions/remove_question/:id' => 'questions#destroy', as: :remove_question
+  resources :users
+  resources :questions do
+  resources :answers, only: :create
+  end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

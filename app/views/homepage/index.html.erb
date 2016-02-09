@@ -1,17 +1,20 @@
-<h1> Welcome to x for all your questions on equity</h1>
+<div class="center jumbotron">
+<h1>TakeStock</h1>
 
-<br/><br/>
+<h2>
+<%= link_to "Ask a question", questions_path%>
+<%= link_to "Connect with a pro", questions_path %>
+<%= link_to "Data", questions_path %> 
+</h2>
 
-Search for your questions
-<%= form_tag "/", method: "GET" do %>
-  <%= text_field_tag :q, params[:q] %>
-  <%= submit_tag "Search" %>
+</div>
+
+
+<% if current_user %>
+	<p1>You're logged in! </p1>
+<% else %>
+	<%= link_to "Sign up with Facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-lg btn-primary"  %>
+	<br/>
+	<%= link_to "Sign up now", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+	</div>
 <% end %>
-
-Ask a question
-<%= render  'form' %>
-
-Here's a list of all the questions 
-<% render 'list' %>
-
-<br/><br/>
