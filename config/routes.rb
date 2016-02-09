@@ -10,7 +10,13 @@ Rails.application.routes.draw do
   get 'questions/remove_question/:id' => 'questions#destroy', as: :remove_question
   resources :users
   resources :questions do
-  resources :answers, only: :create
+    resources :answers
+  end
+  resources :answers do
+      member do
+      post 'upvote'
+      get 'upvote'
+    end
   end
 
 

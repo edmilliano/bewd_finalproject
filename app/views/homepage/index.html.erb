@@ -2,9 +2,11 @@
 <h1>TakeStock</h1>
 
 <h2>
-<%= link_to "Ask a question", questions_path%>
-<%= link_to "Connect with a pro", questions_path %>
-<%= link_to "Data", questions_path %> 
+<%if user_signed_in? %>
+	<%= link_to "Ask a question", questions_path%>
+	<%= link_to "Connect with a pro", questions_path %>
+	<%= link_to "Data", questions_path %>
+<%end%>
 </h2>
 
 </div>

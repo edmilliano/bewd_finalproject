@@ -1,0 +1,4 @@
+<%= form_for [@question, @answer] do |f| %>
+	<%= f.text_area :answertext, placeholder: "Answer question",class: "form-control" %>
+	<%= f.submit 'Submit', class: 'btn btn-default' %>
+<% end %>

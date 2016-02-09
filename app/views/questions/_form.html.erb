@@ -1,6 +1,6 @@
 <%= form_for @question do |f| %>
-  <%= f.text_field :text %><br />
-  <%= f.submit %>
+  <%= f.text_field :text, placeholder: "Ask a question",class: "form-control" %> 
+  <%= f.submit'Submit', class: 'btn btn-default' %>
 <% end %>
 
 <%= link_to "back", questions_path %>

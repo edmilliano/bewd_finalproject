@@ -28,7 +28,9 @@
           <% end %>
         </form>
 
+        <%if user_signed_in? %>
         <p class="navbar-text"><%= link_to "Ask a question", new_question_path %></p>
+        <% end %>
 
         <nav>
         	<ul class="nav navbar-nav navbar-right">

@@ -2,18 +2,26 @@
 <h3><%= @question.text %><br>
 <small><%= @question.topic %></small></h3>
 
-<% @question.answers.each do |answer| %>
-	<p><%= answer.answertext %></p>
-<% end %>
 
 <% if @question.user_id == current_user.id %>
 	<%= link_to "Edit", edit_question_path  %>
 	<%= link_to "Remove", remove_question_path  %>
 	<% else %>
 	<%= form_for [@question, @answer] do |f| %>
-	<%= f.text_area :answertext, placeholder: "Answer question", :rows => 6, :cols => 60 %>
-	<%= f.submit 'Submit' %>
+	<%= f.text_area :answertext, placeholder: "Answer question", class: "form-control" %>
+	<p><%= f.submit 'Submit', class: 'btn btn-default' %></p>
 	<% end %>
+<% end %>
+
+<% @question.answers.each do |answer| %>
+	<ul class="list-group">
+	<li class="list-group-item">
+	<p><%= answer.answertext %></p>
+	<p><%= answer.votes.count %></p>
+	<p><%= link_to 'Upvote', upvote_answer_path(answer), method: :post %>
+    <%= link_to 'Edit', edit_answer_path(answer) %>
+    <%= link_to 'Delete', answer, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    </li>
 <% end %>
 
 <%= link_to "back", questions_path %>

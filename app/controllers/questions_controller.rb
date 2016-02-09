@@ -19,6 +19,11 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def upvote
+    @answer = Answer.find_by_id params[:id]
+    redirect_to(answer_path)
+  end
+
   def edit
     @question = Question.find(params[:id])
   end
